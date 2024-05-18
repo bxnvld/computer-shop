@@ -1,7 +1,9 @@
 const Product = require("./../models/productModel");
 const User = require("./../models/userModel");
+const Purchases = require('./../models/purchasingModel');
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
+const purchasingController = require('./../controllers/purchasingController');
 
 exports.getOverview = catchAsync(async (req, res) => {
   // get product data from collection
@@ -51,6 +53,19 @@ exports.getAccount = (req, res) => {
     title: "Your account",
   });
 };
+
+exports.getMyProducts = catchAsync(async (req,res) => {
+  const purchases = await Purchases.find({ user:req.user.id});
+  //find products with ids from purchases
+  const productIDs = purchases.map(el => el.product);
+  // select all the products that are in the productsIDs
+  const products = await Product.find({ _id: {$in: productIDs}});
+
+  res.status(200).render('overview', {
+    title: 'My products',
+    products
+  })
+});
 
 exports.updateUserData = catchAsync(async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate(
