@@ -104,4 +104,8 @@ block content
             .cta__content
                 h2.heading-secondary What are you waiting for?
                 p.cta__text= `Only $${product.price}. Make it yours today!`
-                button.btn.btn--green.span-all-rows Buy now!
+
+                if user
+                  button.btn.btn--green.span-all-rows#book-product(data-product-id=`${product.id}`) Buy now!
+                else 
+                  a.btn.btn--green.span-all-rows(href='/login') Login in!
