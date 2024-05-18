@@ -1,3 +1,5 @@
+import { showAlert } from "./alerts.js";
+
 const getCheckoutSessionUrl = async (productId) => {
   let api = new Frisbee({
     baseURI: "http://127.0.0.1:8000", // optional
@@ -15,11 +17,14 @@ const getCheckoutSessionUrl = async (productId) => {
     );
 
     if (res.ok) {
+      showAlert("success", "Redirecting...");
       const url = res.body.session.url;
-      location.assign(url);
+      window.setTimeout(() => {
+        location.assign(url);
+      }, 1000);
     }
   } catch (err) {
-    console.log("Error occured during creation of stripe session!");
+    showAlert("error", "Redirecting failed");
   }
 };
 
