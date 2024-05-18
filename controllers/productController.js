@@ -3,7 +3,7 @@ const multer = require("multer");
 const sharp = require("sharp");
 const APIFeatures = require("./../utils/apiFeatures");
 const catchAsync = require("./../utils/catchAsync");
-// const AppError = require('./../utils/appError');
+const AppError = require("./../utils/appError");
 const factory = require("./handlerFactory");
 
 const multerStorage = multer.memoryStorage();
@@ -51,7 +51,7 @@ exports.resizeProductImages = catchAsync(async (req, res, next) => {
         .toFile(`public/img/products/${filename}`);
 
       req.body.images.push(filename);
-    }),
+    })
   );
 
   next();

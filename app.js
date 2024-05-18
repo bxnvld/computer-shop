@@ -15,6 +15,7 @@ const productRouter = require("./routes/productRoutes");
 const userRouter = require("./routes/userRoutes");
 const reviewRouter = require("./routes/reviewRoutes");
 const viewRouter = require("./routes/viewRoutes");
+const bookingRouter = require("./routes/bookingRoutes");
 
 const app = express();
 
@@ -28,7 +29,7 @@ app.use(
       scriptSrc: ["'self'", "cdnjs.cloudflare.com"],
       // Додайте інші директиви за потреби
     },
-  }),
+  })
 );
 
 app.set("view engine", "pug");
@@ -55,7 +56,7 @@ app.use("/api", limiter);
 app.use(
   express.json({
     limit: "10kb",
-  }),
+  })
 );
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(cookieParser());
@@ -68,7 +69,7 @@ app.use(xss());
 app.use(
   hpp({
     whitelist: ["category", "ratingsAverage", "ratingsQuality"],
-  }),
+  })
 );
 
 //test middleware
@@ -84,6 +85,7 @@ app.use("/", viewRouter);
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/reviews", reviewRouter);
+app.use("/api/v1/bookings", bookingRouter);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
