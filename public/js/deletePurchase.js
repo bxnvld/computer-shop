@@ -1,5 +1,3 @@
-import { showAlert } from "./alerts.js";
-
 const deletePurchase = async(data) => {
     try {
         let url = "";
@@ -18,9 +16,9 @@ const deletePurchase = async(data) => {
             body: data,
         });
         if (res.ok) {
-            showAlert("success", `${type.toUpperCase()} updated successfully`);
+            alert("success", `${type.toUpperCase()} updated successfully`);
         } else {
-            showAlert("error", res.err);
+            alert("error", res.err);
         }
     }catch (error) {
         console.error("Error:", error);
