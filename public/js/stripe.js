@@ -13,7 +13,7 @@ const getCheckoutSessionUrl = async (productId) => {
 
   try {
     const res = await api.post(
-      `/api/v1/bookings/checkout-session/${productId}`
+      `/api/v1/purchases/checkout-session/${productId}`
     );
 
     if (res.ok) {
