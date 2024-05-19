@@ -21,10 +21,10 @@ block content
                     .admin-nav
                         h5.admin-nav__heading Admin
                         ul.side-nav
-                            +navItem('#','Manage products','map',false)
-                            +navItem('#','Manage users','users',false)
+                            +navItem('/manage-products','Manage products','map',false)
+                            +navItem('/manage-users','Manage users','users',false)
                             //- +navItem('#','Manage reviews','star',false)
-                            +navItem('#','Manage purchase','briefcase',false)
+                            +navItem('/manage-purchases','Manage purchase','briefcase',false)
                             
             .user-view__content
                 .user-view__form-container
@@ -48,7 +48,6 @@ block content
                         .form__group.right
                             button.btn.btn--small.btn--green Save settings
 
-                .line &nbsp;
                 .user-view__form-container
                     h2.heading-secondary.ma-bt-md Password change
                     form.form.form-user-password
