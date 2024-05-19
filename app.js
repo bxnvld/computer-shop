@@ -20,6 +20,8 @@ const purchasingRouter = require("./routes/purchasingRoutes");
 
 const app = express();
 
+app.enable('trust proxy');
+
 var cors = require("cors");
 app.use(cors());
 
