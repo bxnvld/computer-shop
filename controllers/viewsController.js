@@ -1,6 +1,6 @@
 const Product = require("./../models/productModel");
 const User = require("./../models/userModel");
-const Purchases = require('./../models/purchasingModel');
+const Reviews = require('./../models/reviewModel');
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 const purchasingController = require('./../controllers/purchasingController');
@@ -64,6 +64,20 @@ exports.getMyProducts = catchAsync(async (req,res) => {
   res.status(200).render('overview', {
     title: 'My products',
     products
+  })
+});
+
+exports.getMyReviews = catchAsync(async (req,res) => {
+  const reviews = await Reviews.find({ user:req.user.id});
+  // const reviews = await Reviews.find({ user:req.user.id});
+  // //find products with ids from purchases
+  // const reviewIDs = reviews.map(el => el.review);
+  // // select all the products that are in the productsIDs
+  // const reviewsx = await Product.find({ _id: {$in: productIDs}});
+
+  res.status(200).render('overview', {
+    title: 'My reviews',
+    reviews
   })
 });
 

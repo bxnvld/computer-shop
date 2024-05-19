@@ -14,17 +14,17 @@ block content
                 ul.side-nav
                     +navItem('#','Settings','settings',true)
                     +navItem('/my-products','My purchases','briefcase',false)
-                    +navItem('#','My reviews','star',false)
+                    +navItem('/my-reviews','My reviews','star',false)
                     //- +navItem('#','Billing','credit-card',false)
 
                 - if(user.role === 'admin') 
                     .admin-nav
                         h5.admin-nav__heading Admin
                         ul.side-nav
-                            +navItem('/manage-products','Manage products','map',false)
-                            +navItem('/manage-users','Manage users','users',false)
+                            //- +navItem('/manage-products','Manage products','map',false)
+                            //- +navItem('/manage-users','Manage users','users',false)
                             //- +navItem('#','Manage reviews','star',false)
-                            +navItem('/manage-purchases','Manage purchase','briefcase',false)
+                            //- +navItem('/manage-purchases','Manage purchase','briefcase',false)
                             
             .user-view__content
                 .user-view__form-container

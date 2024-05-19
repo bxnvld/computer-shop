@@ -21,6 +21,7 @@ router.get("/login", authController.isLoggedIn, viewsController.getLoginForm);
 router.get("/signup", authController.isLoggedIn, viewsController.getSignForm);
 router.get("/me", authController.protect, viewsController.getAccount);
 router.get("/my-products", authController.protect, viewsController.getMyProducts);
+router.get("/my-reviews", authController.protect, viewsController.getMyReviews);
 
 router.get("/manage-products", authController.protect, authController.restrictTo('admin','seller'),viewsController.manageProducts);
 router.get("/manage-users", authController.protect, authController.restrictTo('admin','seller'),viewsController.manageUsers);
