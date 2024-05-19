@@ -4,7 +4,6 @@ const factory = require("./handlerFactory");
 const Product = require("../models/productModel");
 const Purchase = require("../models/purchasingModel");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const Purchase = require("../models/purchaseModel");
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   try{  
