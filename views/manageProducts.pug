@@ -28,37 +28,94 @@ block content
                             
             .user-view__content
                 .user-view__form-container
-                    h2.heading-secondary.ma-bt-md Your account settings
-
-                    //- not using api
-                    //- form.form.form-user-data(action='/submit-user-data' method='POST')
-                    //- using api
+                    h2.heading-secondary.ma-bt-md Create Product
                     form.form.form-user-data
                         .form__group
-                            label.form__label(for='name') Name
-                            input#name.form__input(type='text', value=`${user.name}`, required, name='name')
-                        .form__group.ma-bt-md
-                            label.form__label(for='email') Email address
-                            input#email.form__input(type='email', value=`${user.email}`, required, name='email')
+                            label.form__label(for='rating') Rating
+                            input#name.form__input(type='text', value=`${user.name}`, required, name='rating')
                         .form__group.form__photo-upload
-                            img.form__user-photo(src=`img/users/${user.photo}`, alt=`${user.name} photo`)
                             input.form__upload(type='file', accept='image/*', id='photo', name='photo')
-                            label(for='photo') Choose new photo
+                            label(for='photo') Choose photo
+                        .form__group
+                            label.form__label(for='name') Name
+                            input#name.form__input(type='text', value=``, required, name='name')
+                        .form__group
+                            label.form__label(for='category') Categoty
+                            input#name.form__input(type='text', value=`Category is either Laptop, Desktop or Tablet`, required, name='category')
+                        .form__group
+                            label.form__label(for='price') Price
+                            input#name.form__input(type='text', value=``, required, name='price')
+                        .form__group
+                            label.form__label(for='description') Description
+                            input#name.form__input(type='text', value=``, required, name='description')
+                        .form__group
+                            label.form__label(for='warranty') Warranty
+                            input#name.form__input(type='text', value=``, required, name='warranty')
+                        .form__group
+                            label.form__label(for='processor') Processor
+                            input#name.form__input(type='text', value=``, required, name='processor')
+                        .form__group
+                            label.form__label(for='graphicsCard') Graphics Card
+                            input#name.form__input(type='text', value=``, required, name='graphicsCard')
+                        .form__group
+                            label.form__label(for='ram') Ram
+                            input#name.form__input(type='text', value=``, required, name='ram')
+                        .form__group
+                            label.form__label(for='drive') Drive
+                            input#name.form__input(type='text', value=``, required, name='drive')
 
                         .form__group.right
-                            button.btn.btn--small.btn--green Save settings
+                            button.btn.btn--small.btn--green Create
 
-                .user-view__form-container
-                    h2.heading-secondary.ma-bt-md Password change
-                    form.form.form-user-password
+            .user-view__form-container
+                    h2.heading-secondary.ma-bt-md Update Product
+                    form.form.form-user-data
                         .form__group
-                            label.form__label(for='password-current') Current password
-                            input#password-current.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                            label.form__label(for='rating') Rating
+                            input#name.form__input(type='text', value=`${user.name}`, required, name='rating')
+                        .form__group.form__photo-upload
+                            input.form__upload(type='file', accept='image/*', id='photo', name='photo')
+                            label(for='photo') Choose photo
                         .form__group
-                            label.form__label(for='password') New password
-                            input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
-                        .form__group.ma-bt-lg
-                            label.form__label(for='password-confirm') Confirm password
-                            input#password-confirm.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                            label.form__label(for='name') Name
+                            input#name.form__input(type='text', value=``, required, name='name')
+                        .form__group
+                            label.form__label(for='category') Categoty
+                            input#name.form__input(type='text', value=`Category is either Laptop, Desktop or Tablet`, required, name='category')
+                        .form__group
+                            label.form__label(for='price') Price
+                            input#name.form__input(type='text', value=``, required, name='price')
+                        .form__group
+                            label.form__label(for='description') Description
+                            input#name.form__input(type='text', value=``, required, name='description')
+                        .form__group
+                            label.form__label(for='warranty') Warranty
+                            input#name.form__input(type='text', value=``, required, name='warranty')
+                        .form__group
+                            label.form__label(for='processor') Processor
+                            input#name.form__input(type='text', value=``, required, name='processor')
+                        .form__group
+                            label.form__label(for='graphicsCard') Graphics Card
+                            input#name.form__input(type='text', value=``, required, name='graphicsCard')
+                        .form__group
+                            label.form__label(for='ram') Ram
+                            input#name.form__input(type='text', value=``, required, name='ram')
+                        .form__group
+                            label.form__label(for='drive') Drive
+                            input#name.form__input(type='text', value=``, required, name='drive')
+
                         .form__group.right
-                            button.btn.btn--small.btn--green.btn--save-password Save password
+                            button.btn.btn--small.btn--green Update
+
+            .user-view__form-container
+                    h2.heading-secondary.ma-bt-md Delete Product
+                    form.form.form-user-data
+
+                        .form__group
+                            label.form__label(for='productId') ProductId
+                            input#name.form__input(type='text', value=``, required, name='productId')
+
+                        .form__group.right
+                            button.btn.btn--small.btn--green Delete
+
+                
