@@ -70,10 +70,13 @@ exports.getMyProducts = catchAsync(async (req,res) => {
 exports.getMyReviews = catchAsync(async (req,res) => {
   const reviews = await Reviews.find({ user:req.user.id});
 
-  res.status(200).render('reviews', {
-    title: 'My reviews',
-    reviews
+  res.status(200).json({
+    status:'success',
+    data: {
+      reviews
+    }
   })
+  
 });
 
 exports.updateUserData = catchAsync(async (req, res) => {
