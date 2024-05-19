@@ -22,6 +22,10 @@ router.get("/signup", authController.isLoggedIn, viewsController.getSignForm);
 router.get("/me", authController.protect, viewsController.getAccount);
 router.get("/my-products", authController.protect, viewsController.getMyProducts);
 
+router.get("/manage-products", authController.protect, authController.restrictTo('admin','seller'),viewsController.manageProducts);
+router.get("/manage-users", authController.protect, authController.restrictTo('admin','seller'),viewsController.manageUsers);
+router.get("/manage-purchases", authController.protect, authController.restrictTo('admin','seller'),viewsController.managePurchases);
+
 router.post(
   "/submit-user-data",
   authController.protect,

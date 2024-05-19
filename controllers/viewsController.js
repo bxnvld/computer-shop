@@ -85,3 +85,21 @@ exports.updateUserData = catchAsync(async (req, res) => {
     user: updatedUser,
   });
 });
+
+exports.manageProducts = catchAsync(async (req, res) => {
+  res.status(200).render('manageProducts', {
+    title: 'Managing Products'
+  })
+});
+
+exports.manageUsers = catchAsync(async (req, res) => {
+  res.status(200).render('manageUsers', {
+    title: 'Managing User'
+  })
+});
+
+exports.managePurchases = catchAsync(async (req, res) => {
+  res.status(200).render('managePurchases', {
+    title: 'Managing Purchases'
+  })
+});
