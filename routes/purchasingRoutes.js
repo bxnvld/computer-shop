@@ -1,6 +1,7 @@
 const express = require("express");
 const purchasingController = require("../controllers/purchasingController");
 const authController = require("../controllers/authController");
+const deletePurchase = require("./../public/js/deletePurchase")
 
 const router = express.Router();
 
@@ -17,14 +18,14 @@ router
   .get(purchasingController.getAllPurchases)
   .post(purchasingController.createPurchase);
 
-router.route('/createPurchase').post(purchasingController.createPurchase);
-router.route('/updatePurchase').post(purchasingController.updateMe);
-router.route('/deletePurchase').post(purchasingController.deletePurchase);
+// router.route('/createPurchase').post(purchasingController.createPurchase);
+// router.route('/updatePurchase').post(purchasingController.updateMe);
+// router.route('/deletePurchase').post(purchasingController.deletePurchase);
 
 router
   .route('/:id')
   .get(purchasingController.getPurchase)
   .patch(purchasingController.updatePurchase)
-  .delete(purchasingController.deletePurchase);
+  .delete(deletePurchase);
 
 module.exports = router;
