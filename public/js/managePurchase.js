@@ -100,7 +100,7 @@ document.querySelector(".form-purchase-update").addEventListener("submit", async
       managePurchase(form, "update");
 });
 
-document.querySelector(".form-purchase-update").addEventListener("submit", async (e) => {
+document.querySelector(".form-purchase-delete").addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = new FormData();
     form.append("productId",document.getElementById("productId").value);
