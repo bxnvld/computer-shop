@@ -2,7 +2,7 @@ import { showAlert } from "./alerts.js";
 
 const login = async (email, password) => {
   let api = new Frisbee({
-    baseURI: "http://127.0.0.1:8000", // optional
+    baseURI: "", // optional
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
