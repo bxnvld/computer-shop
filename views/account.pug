@@ -14,7 +14,7 @@ block content
                 ul.side-nav
                     +navItem('#','Settings','settings',true)
                     +navItem('/my-products','My purchases','briefcase',false)
-                    //- +navItem('#','My reviews','star',false)
+                    +navItem('#','My reviews','star',false)
                     //- +navItem('#','Billing','credit-card',false)
 
                 - if(user.role === 'admin') 

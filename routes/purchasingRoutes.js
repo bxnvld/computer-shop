@@ -17,6 +17,10 @@ router
   .get(purchasingController.getAllPurchases)
   .post(purchasingController.createPurchase);
 
+router.route('/createPurchase').post(purchasingController.createPurchase);
+router.route('/updatePurchase').post(purchasingController.updateMe);
+router.route('/deletePurchase').post(purchasingController.deletePurchase);
+
 router
   .route('/:id')
   .get(purchasingController.getPurchase)

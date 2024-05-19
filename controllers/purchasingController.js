@@ -4,6 +4,7 @@ const factory = require("./handlerFactory");
 const Product = require("../models/productModel");
 const Purchase = require("../models/purchasingModel");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const Purchase = require("../models/purchaseModel");
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   try{  
@@ -51,6 +52,22 @@ exports.createPurchaseCheckout = catchAsync(async (req,res,next) => {
   await Purchase.create({ product, user, price });
   // console.log(req.originalUrl.split('?')[0]);
   res.redirect(req.originalUrl.split('?')[0]);
+});
+
+exports.updateMe = catchAsync(async (req, res, next) => {
+  //filtered unwanted fields for updating
+  //update user document
+  const updatedPurchase = await Purchase.findByIdAndUpdate(req.purchase.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      purchase: updatedPurchase,
+    },
+  });
 });
 
 exports.createPurchase = factory.createOne(Purchase);
