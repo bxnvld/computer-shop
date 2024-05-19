@@ -33,10 +33,10 @@ module.exports = class Email {
       //       apiKey: process.env.SENDGRID_USERNAME
       //     })
       // )
-      console.log(
-        "BREVO_API_KEY:",
-        process.env.BREVO_API_KEY ? "Key is set" : "Key is missing",
-      );
+      // console.log(
+      //   "BREVO_API_KEY:",
+      //   process.env.BREVO_API_KEY ? "Key is set" : "Key is missing",
+      // );
       return nodemailer.createTransport(
         new Transport({ apiKey: process.env.BREVO_API_KEY }),
       );

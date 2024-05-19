@@ -28,7 +28,7 @@ exports.uploadProductImages = upload.fields([
 
 exports.resizeProductImages = catchAsync(async (req, res, next) => {
   if (!req.files.imageCover || !req.files.images) {
-    console.log("hell nah");
+    // console.log("hell nah");
     next();
   }
   //1)cover image

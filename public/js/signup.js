@@ -1,10 +1,7 @@
 import { showAlert } from "./alerts.js";
 
 const signup = async (name, email, password, passwordConfirm) => {
-  console.log(name);
-  console.log(email);
-  console.log(password);
-  console.log(passwordConfirm);
+
   let api = new Frisbee({
     baseURI: "http://127.0.0.1:8000", // optional
     headers: {

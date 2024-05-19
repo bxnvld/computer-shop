@@ -24,6 +24,7 @@ const getCheckoutSessionUrl = async (productId) => {
       }, 1000);
     }
   } catch (err) {
+    console.log(err);
     showAlert("error", "Redirecting failed");
   }
 };

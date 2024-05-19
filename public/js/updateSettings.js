@@ -46,7 +46,7 @@ const updateSettings = async (data, type) => {
           passwordConfirm: passwordConfirm,
         }),
       });
-      console.log(res.body);
+      // console.log(res.body);
       if (res.ok) {
         showAlert("success", `${type.toUpperCase()} updated successfully`);
       } else {
@@ -62,7 +62,7 @@ document
   .querySelector(".form-user-data")
   .addEventListener("submit", async (e) => {
     e.preventDefault();
-    console.log("NAME:", document.getElementById("name").value);
+    // console.log("NAME:", document.getElementById("name").value);
     const form = new FormData();
     form.append("name", document.getElementById("name").value);
     form.append("email", document.getElementById("email").value);
@@ -74,7 +74,7 @@ document
         body: form,
       });
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.error("Error:", error);
     }

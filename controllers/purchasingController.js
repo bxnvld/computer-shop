@@ -36,7 +36,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
       session
     });
   }catch(err){
-    console.log(err);
+    // console.log(err);
     showAlert('happens',500);
     return next(new AppError(err,err.statusCode));
   }
@@ -45,11 +45,11 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 
 exports.createPurchaseCheckout = catchAsync(async (req,res,next) => {
   const { product, user, price } = req.query;
-  console.log(product,"|",user,"|",price);
+  // console.log(product,"|",user,"|",price);
 
   if (!product && !user && !price) return next();
   await Purchase.create({ product, user, price });
-  console.log(req.originalUrl.split('?')[0]);
+  // console.log(req.originalUrl.split('?')[0]);
   res.redirect(req.originalUrl.split('?')[0]);
 });
 

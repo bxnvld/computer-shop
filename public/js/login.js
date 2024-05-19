@@ -33,16 +33,16 @@ const login = async (email, password) => {
   }
 };
 
-const logout = async () => {
-  try {
-    const res = await api.get("/users/logout");
-    if (res.ok) {
-      location.reload(true);
-    }
-  } catch (err) {
-    showAlert("error", "Error loging out");
-  }
-};
+// const logout = async () => {
+//   try {
+//     const res = await api.get("/users/logout");
+//     if (res.ok) {
+//       location.reload(true);
+//     }
+//   } catch (err) {
+//     showAlert("error", "Error loging out");
+//   }
+// };
 
 document.querySelector(".form--login").addEventListener("submit", (e) => {
   e.preventDefault();
