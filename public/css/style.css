@@ -330,6 +330,7 @@ body {
 .header__logo img {
   height: 3.5rem;
   flex: 1;
+  margin-left: 400px;
   display: flex;
   justify-content: center; /* Centers the logo horizontally */
 }
