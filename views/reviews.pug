@@ -8,7 +8,7 @@ block content
                     .card__header
                         .card__picture
                             .card__picture-overlay &nbsp;
-                            img.card__picture-img(src=`img/users/${review.user.photo}`, alt=`${review.user.name}`)
+                            img.card__picture-img(src=`img/users/${review.product.photo}`, alt=`${review.product.name}`)
                     .card__details
                         h4.card__sub-heading= review.user.name
                         p.card__text= review.review
@@ -20,4 +20,4 @@ block content
                             span.card__footer-value= new Date(review.createdAt).toLocaleDateString('en-US')
                         .card__data 
                             span Product Name: 
-                            span.card__footer-value= review.product
+                            span.card__footer-value= review.product.name
