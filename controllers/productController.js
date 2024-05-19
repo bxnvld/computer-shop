@@ -47,7 +47,7 @@ exports.resizeProductImages = catchAsync(async (req, res, next) => {
       await sharp(file.buffer)
         .resize(550, 450)
         .toFormat("jpeg")
-        .jpeg({ quality: 90 })
+        // .jpeg({ quality: 90 })
         .toFile(`public/img/products/${filename}`);
 
       req.body.images.push(filename);
