@@ -1,4 +1,5 @@
 const Product = require("./../models/productModel");
+const Purchases = require("./../models/purchasingModel");
 const User = require("./../models/userModel");
 const Reviews = require('./../models/reviewModel');
 const catchAsync = require("./../utils/catchAsync");
