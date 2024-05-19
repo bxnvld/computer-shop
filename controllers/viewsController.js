@@ -69,13 +69,8 @@ exports.getMyProducts = catchAsync(async (req,res) => {
 
 exports.getMyReviews = catchAsync(async (req,res) => {
   const reviews = await Reviews.find({ user:req.user.id});
-  // const reviews = await Reviews.find({ user:req.user.id});
-  // //find products with ids from purchases
-  // const reviewIDs = reviews.map(el => el.review);
-  // // select all the products that are in the productsIDs
-  // const reviewsx = await Product.find({ _id: {$in: productIDs}});
 
-  res.status(200).render('overview', {
+  res.status(200).render('reviews', {
     title: 'My reviews',
     reviews
   })
