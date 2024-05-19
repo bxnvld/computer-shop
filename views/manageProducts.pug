@@ -32,7 +32,7 @@ block content
                     form.form.form-user-data
                         .form__group
                             label.form__label(for='rating') Rating
-                            input#name.form__input(type='text', value=`${user.name}`, required, name='rating')
+                            input#name.form__input(type='text', value=``, required, name='rating')
                         .form__group.form__photo-upload
                             input.form__upload(type='file', accept='image/*', id='photo', name='photo')
                             label(for='photo') Choose photo
@@ -73,7 +73,7 @@ block content
                     form.form.form-user-data
                         .form__group
                             label.form__label(for='rating') Rating
-                            input#name.form__input(type='text', value=`${user.name}`, required, name='rating')
+                            input#name.form__input(type='text', value=``, required, name='rating')
                         .form__group.form__photo-upload
                             input.form__upload(type='file', accept='image/*', id='photo', name='photo')
                             label(for='photo') Choose photo
@@ -108,7 +108,9 @@ block content
                         .form__group.right
                             button.btn.btn--small.btn--green Update
 
-            .user-view__form-container
+            .user-view__content
+                .user-view__form-container
+                    h2.heading-secondary.ma-bt-md 
                     h2.heading-secondary.ma-bt-md Delete Product
                     form.form.form-user-data
                         .form__group
