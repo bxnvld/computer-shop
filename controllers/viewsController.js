@@ -68,7 +68,10 @@ exports.getMyProducts = catchAsync(async (req,res) => {
 });
 
 exports.getMyReviews = catchAsync(async (req,res) => {
-  const reviews = await Reviews.find({ user:req.user.id});
+  const reviews = await Reviews.find({ user:req.user.id}).populate({
+    path: "product",
+    fields: "photo name",
+  });
 
   res.status(200).render('reviews', {
     title: 'My products',
