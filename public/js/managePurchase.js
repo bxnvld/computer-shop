@@ -59,13 +59,12 @@ const managePurchase = async(data,type) => {
       }
 };
 
-document.querySelector(".form-user-data").addEventListener("submit", async (e) => {
+document.querySelector(".form-purchase-create").addEventListener("submit", async (e) => {
     e.preventDefault();
     const form = new FormData();
     form.append("productId",document.getElementById("productId").value);
     form.append("userId",document.getElementById("userId").value);
     form.append("price",document.getElementById("price").value);
-    form.append("",true);
 
     try {
         const response = await fetch("/api/v1/purchase/createPurchase", {
@@ -78,4 +77,43 @@ document.querySelector(".form-user-data").addEventListener("submit", async (e) =
         console.error("Error:", error);
       }
       managePurchase(form, "create");
+});
+
+document.querySelector(".form-purchase-update").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = new FormData();
+    form.append("purchaseId",document.getElementById("purchaseId").value);
+    form.append("productId",document.getElementById("productId").value);
+    form.append("userId",document.getElementById("userId").value);
+    form.append("price",document.getElementById("price").value);
+
+    try {
+        const response = await fetch("/api/v1/purchase/createPurchase", {
+          method: "PATCH",
+          body: form,
+        });
+        const data = await response.json();
+        // console.log(data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+      managePurchase(form, "update");
+});
+
+document.querySelector(".form-purchase-update").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = new FormData();
+    form.append("productId",document.getElementById("productId").value);
+
+    try {
+        const response = await fetch("/api/v1/purchase/createPurchase", {
+          method: "PATCH",
+          body: form,
+        });
+        const data = await response.json();
+        // console.log(data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+      managePurchase(form, "delete");
 });
