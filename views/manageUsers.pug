@@ -42,15 +42,10 @@ block content
                         .form__group.ma-bt-md
                             label.form__label(for='password') Password
                             input#email.form__input(type='password', value=`${user.password}`, required, name='password')
-                        .form__group.form__photo-upload
-                            img.form__user-photo(src=`img/users/${user.photo}`, alt=`${user.name} photo`)
-                            input.form__upload(type='file', accept='image/*', id='photo', name='photo')
-                            label(for='photo') Choose photo
 
                         .form__group.right
                             button.btn.btn--small.btn--green Create
 
-                .line &nbsp;
                     h2.heading-secondary.ma-bt-md Update User
                     form.form.form-user-data
                         .form__group
@@ -67,7 +62,6 @@ block content
                         .form__group.right
                             button.btn.btn--small.btn--green Update
 
-                .line &nbsp;
                     h2.heading-secondary.ma-bt-md Delete User
                     form.form.form-user-data
                         .form__group.ma-bt-md
