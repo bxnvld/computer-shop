@@ -11,21 +11,21 @@ router
   .route("/checkout-session/:productId")
   .post(purchasingController.getCheckoutSession);
 
-router.use(authController.restrictTo('admin','seller'));
+// router.use(authController.restrictTo('admin','seller'));
 
-router
-  .route('/')
-  .get(purchasingController.getAllPurchases)
-  .post(purchasingController.createPurchase);
+// router
+//   .route('/')
+//   .get(purchasingController.getAllPurchases)
+//   .post(purchasingController.createPurchase);
 
 // router.route('/createPurchase').post(purchasingController.createPurchase);
 // router.route('/updatePurchase').post(purchasingController.updateMe);
 // router.route('/deletePurchase').post(purchasingController.deletePurchase);
 
-router
-  .route('/:id')
-  .get(purchasingController.getPurchase)
-  .patch(purchasingController.updatePurchase)
-  .delete(deletePurchase);
+// router
+//   .route('/:id')
+//   .get(purchasingController.getPurchase)
+//   .patch(purchasingController.updatePurchase)
+//   .delete(deletePurchase);
 
 module.exports = router;
