@@ -1,5 +1,5 @@
 const express = require("express");
-const viewsController = require("./../controllers/viewsController");
+const viewsController = require("./../controllers/viewsController"), getAccount = require("../controllers/getAccount");
 const authController = require("./../controllers/authController");
 const purchasingController = require("./../controllers/purchasingController");
 
@@ -19,7 +19,7 @@ router.get(
 );
 router.get("/login", authController.isLoggedIn, viewsController.getLoginForm);
 router.get("/signup", authController.isLoggedIn, viewsController.getSignForm);
-router.get("/me", authController.protect, viewsController.getAccount);
+router.get("/me", authController.protect, getAccount.getAccount);
 router.get("/my-products", authController.protect, viewsController.getMyProducts);
 router.get("/my-reviews", authController.protect, viewsController.getMyReviews);
 

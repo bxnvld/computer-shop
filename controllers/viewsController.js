@@ -64,7 +64,7 @@ exports.getAccount = async(req, res) => {
   const purchasesYear = await Purchases.aggregate([
     {
         $match: {
-            purchaseDate: {
+          createdAt: {
                 $gte: new Date(`${year}-01-01T00:00:00.000Z`), // Start of the year
                 $lt: new Date(`${year + 1}-01-01T00:00:00.000Z`) // Start of the next year
             }
@@ -75,7 +75,7 @@ exports.getAccount = async(req, res) => {
   const purchasesMonth = await Purchases.aggregate([
     {
         $match: {
-            purchaseDate: {
+            createdAt: {
                 $gte: new Date(`${year}-${pMonth}-01T00:00:00.000Z`), // Start of the year
                 $lt: new Date(`${year + 1}-${pMonth+1}-01T00:00:00.000Z`) // Start of the next year
             }
@@ -86,7 +86,7 @@ exports.getAccount = async(req, res) => {
   const purchasesDay = await Purchases.aggregate([
     {
         $match: {
-            purchaseDate: {
+          createdAt: {
                 $gte: new Date(`${year}-${pMonth}-${pDay}T00:00:00.000Z`), // Start of the year
                 $lt: new Date(`${year + 1}-${pMonth+1}-${pDay+1}T00:00:00.000Z`) // Start of the next year
             }
@@ -113,7 +113,7 @@ exports.getAccount = async(req, res) => {
   const purchasesDayPrice = pricesD.reduce((acc, curr) => acc + curr, 0);
   const purchasesDayNum = prices.length;
   //
-
+  console.log("ATTENTION: ${}");
   res.status(200).render("account", {
     title: "Your account",
     purchasesYearPrice,
