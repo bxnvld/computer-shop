@@ -62,27 +62,27 @@ exports.getAccount = async(req, res) => {
   const pDay          = day.toString().padStart(2,"0");
   const newPaddedDate = `${year}/${pMonth}/${pDay}`;
   
-  const purchasesYear = await Purchases.aggregate([
-    {
-        $match: {
-          createdAt: {
-                $gte: new Date(`${year}-01-01T00:00:00.000Z`), // Start of the year
-                $lt: new Date(`${year + 1}-01-01T00:00:00.000Z`) // Start of the next year
-            }
-        }
-    }
-  ]);
+  // const purchasesYear = await Purchases.aggregate([
+  //   {
+  //       $match: {
+  //         createdAt: {
+  //               $gte: new Date(`${year}-01-01T00:00:00.000Z`), // Start of the year
+  //               $lt: new Date(`${year + 1}-01-01T00:00:00.000Z`) // Start of the next year
+  //           }
+  //       }
+  //   }
+  // ]);
 
-  const purchasesMonth = await Purchases.aggregate([
-    {
-      $match: {
-        createdAt: {
-              $gte: new Date(`${year}-01-01T00:00:00.000Z`), // Start of the year
-              $lt: new Date(`${year + 1}-01-01T00:00:00.000Z`) // Start of the next year
-          }
-      }
-  }
-  ]);
+  // const purchasesMonth = await Purchases.aggregate([
+  //   {
+  //     $match: {
+  //       createdAt: {
+  //             $gte: new Date(`${year}-01-01T00:00:00.000Z`), // Start of the year
+  //             $lt: new Date(`${year + 1}-01-01T00:00:00.000Z`) // Start of the next year
+  //         }
+  //     }
+  // }
+  // ]);
 
   const purchasesDay = await Purchases.aggregate([
     {
@@ -96,13 +96,13 @@ exports.getAccount = async(req, res) => {
   ]);
 
   //year
-  const pY = purchasesYear.map(el => el.price);
-  const pYP = pY.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-  const countY = pY.length;
-  //month
-  const pM = purchasesMonth.map(el => el.price);
-  const pMP = pM.reduce((accumulator, currentValue) => accumulator + currentValue,0);
-  const countM = pM.length;
+  // const pY = purchasesYear.map(el => el.price);
+  // const pYP = pY.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  // const countY = pY.length;
+  // //month
+  // const pM = purchasesMonth.map(el => el.price);
+  // const pMP = pM.reduce((accumulator, currentValue) => accumulator + currentValue,0);
+  // const countM = pM.length;
   //day
   const pD = purchasesDay.map(el => el.price);
   const pDP = pD.reduce((accumulator, currentValue) => accumulator + currentValue,0);
@@ -121,10 +121,10 @@ exports.getAccount = async(req, res) => {
   res.status(200).json({
     status: "success",
     data:{
-      pYP,
-      countY,
-      pMP,
-      countM,
+      // pYP,
+      // countY,
+      // pMP,
+      // countM,
       pDP,
       countD
     }
