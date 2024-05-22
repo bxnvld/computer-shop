@@ -88,8 +88,8 @@ exports.getAccount = async(req, res) => {
     {
       $match: {
         createdAt: {
-              $gte: new Date(`${year}-05-01T00:00:00.000Z`), // Start of the year
-              $lt: new Date(`${year + 1}-06-01T00:00:00.000Z`) // Start of the next year
+              $gte: new Date(`${year}-05-18T00:00:00.000Z`), // Start of the year
+              $lt: new Date(`${year + 1}-06-20T00:00:00.000Z`) // Start of the next year
           }
       }
   }
