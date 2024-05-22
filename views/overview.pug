@@ -36,3 +36,8 @@ block content
                             span.card__footer-value= product.ratingsAverage
                             span.card__footer-text= ` rating (${product.ratingsQuantity})`
                         a.btn.btn--green.btn--small(href=`/product/${product.slug}`) Details
+
+
+        .total-price 
+            p.total-price-value
+                span.totalPrice= `Total spent: ${totalPrice}`

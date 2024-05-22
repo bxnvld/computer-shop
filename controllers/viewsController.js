@@ -62,9 +62,12 @@ exports.getMyProducts = catchAsync(async (req,res) => {
   // select all the products that are in the productsIDs
   const products = await Product.find({ _id: {$in: productIDs}});
 
+  const totalPrice = prices.reduce((acc, curr) => acc + curr, 0);
+
   res.status(200).render('overview', {
     title: 'My products',
-    products
+    products,
+    totalPrice
   })
 });
 
