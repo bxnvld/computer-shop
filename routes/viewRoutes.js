@@ -1,6 +1,5 @@
 const express = require("express");
 const viewsController = require("./../controllers/viewsController"), 
-getAccount = require("../controllers/getAccount");
 const authController = require("./../controllers/authController");
 const purchasingController = require("./../controllers/purchasingController");
 
