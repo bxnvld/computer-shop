@@ -105,7 +105,7 @@ exports.getAccount = async(req, res) => {
   const countM = pM.length;
   //day
   const pD = purchasesDay.map(el => el.price);
-  const pDP = pDP.reduce((accumulator, currentValue) => accumulator + currentValue,0);
+  const pDP = pD.reduce((accumulator, currentValue) => accumulator + currentValue,0);
   const countD = pD.length;
 
   console.log("ATTENTION: ${}");
