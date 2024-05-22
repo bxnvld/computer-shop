@@ -101,13 +101,13 @@ exports.getAccount = async(req, res) => {
   const purchasesYearPrice = prices.reduce((acc, curr) => acc + curr, 0);
   const purchasesYearNum = prices.length;
   //month
-  const productIDsM = purachasesMonth.map(el => el.product);
+  const productIDsM = purchasesMonth.map(el => el.product);
   const productsM = await Product.find({ _id: {$in: productIDsM}});
   const pricesM= productsM.map(el => el.price);
   const purchasesMonthPrice = pricesM.reduce((acc, curr) => acc + curr, 0);
   const purchasesMonthNum = prices.length;
   //day
-  const productIDsD = purachasesDay.map(el => el.product);
+  const productIDsD = purchasesDay.map(el => el.product);
   const productsD = await Product.find({ _id: {$in: productIDsD}});
   const pricesD= productsD.map(el => el.price);
   const purchasesDayPrice = pricesD.reduce((acc, curr) => acc + curr, 0);
