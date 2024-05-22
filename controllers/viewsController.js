@@ -124,9 +124,9 @@ exports.getAccount = async(req, res) => {
       pYP,
       countY,
       pMP,
-      countM,
+      month,
       pDP,
-      countD
+      day
     }
     // Include other data (pMP, countM, pDP, countD) if available
   });
