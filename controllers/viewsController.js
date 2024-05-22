@@ -94,6 +94,10 @@ exports.getAccount = async(req, res) => {
     }
   ]);
 
+  const pY = purchasesYear.map(el => el.price);
+  const pYP = pY.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+  const countY = pY.length;
+
   //year
   const productIDs = purchasesYear.map(el => el.product);
   const products = await Product.find({ _id: {$in: productIDs}});
@@ -116,8 +120,8 @@ exports.getAccount = async(req, res) => {
   console.log("ATTENTION: ${}");
   res.status(200).render("account", {
     title: "Your account",
-    purchasesYearPrice,
-    purchasesYearNum,
+    pYP,
+    countY,
     purchasesMonthPrice,
     purchasesMonthNum,
     purchasesDayPrice,
