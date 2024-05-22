@@ -100,11 +100,11 @@ exports.getAccount = async(req, res) => {
   const pYP = pY.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   const countY = pY.length;
   //month
-  const pM = purchaseMonth.map(el => el.price);
+  const pM = purchasesMonth.map(el => el.price);
   const pMP = pM.reduce((accumulator, currentValue) => accumulator + currentValue,0);
   const countM = pM.length;
   //day
-  const pD = purchaseDay.map(el => el.price);
+  const pD = purchasesDay.map(el => el.price);
   const pDP = pDP.reduce((accumulator, currentValue) => accumulator + currentValue,0);
   const countD = pD.length;
 
