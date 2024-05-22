@@ -109,15 +109,29 @@ exports.getAccount = async(req, res) => {
   const countD = pD.length;
 
   console.log("ATTENTION: ${}");
-  res.status(200).render("account", {
-    title: "Your account",
-    pYP,
-    countY,
-    pMP,
-    countM,
-    pDP,
-    countD
+  // res.status(200).render("account", {
+  //   title: "Your account",
+  //   pYP,
+  //   countY,
+  //   pMP,
+  //   countM,
+  //   pDP,
+  //   countD
+  // });
+
+  res.status(200).json({
+    status: "success",
+    data:{
+      pYP,
+      countY,
+      pMP,
+      countM,
+      pDP,
+      countD
+    }
+    // Include other data (pMP, countM, pDP, countD) if available
   });
+
 };
 
 exports.getMyProducts = catchAsync(async (req,res) => {
