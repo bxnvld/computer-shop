@@ -77,8 +77,8 @@ exports.getAccount = async(req, res) => {
     {
         $match: {
             createdAt: {
-                $gte: new Date(`${year}-${month-1}-01T00:00:00.000Z`), // Start of the year
-                $lt: new Date(`${year + 1}-${month+1}-01T00:00:00.000Z`) // Start of the next year
+                $gte: new Date(`${year}-05-01T00:00:00.000Z`), // Start of the year
+                $lt: new Date(`${year + 1}-06-01T00:00:00.000Z`) // Start of the next year
             }
         }
     }
@@ -88,8 +88,8 @@ exports.getAccount = async(req, res) => {
     {
         $match: {
           createdAt: {
-                $gte: new Date(`${year}-${month-1}-${day-1}T00:00:00.000Z`), // Start of the year
-                $lt: new Date(`${year + 1}-${month+1}-${day+1}T00:00:00.000Z`) // Start of the next year
+                $gte: new Date(`${year}-05-21T00:00:00.000Z`), // Start of the year
+                $lt: new Date(`${year + 1}-05-22T00:00:00.000Z`) // Start of the next year
             }
         }
     }
