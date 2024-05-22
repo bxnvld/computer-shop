@@ -5,6 +5,7 @@ const Reviews = require('./../models/reviewModel');
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 const purchasingController = require('./../controllers/purchasingController');
+const { CountryCodes } = require("validator/lib/isISO31661Alpha2");
 
 exports.getOverview = catchAsync(async (req, res) => {
   // get product data from collection
@@ -94,38 +95,28 @@ exports.getAccount = async(req, res) => {
     }
   ]);
 
+  //year
   const pY = purchasesYear.map(el => el.price);
   const pYP = pY.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   const countY = pY.length;
-
-  //year
-  const productIDs = purchasesYear.map(el => el.product);
-  const products = await Product.find({ _id: {$in: productIDs}});
-  const prices = products.map(el => el.price);
-  const purchasesYearPrice = prices.reduce((acc, curr) => acc + curr, 0);
-  const purchasesYearNum = prices.length;
   //month
-  const productIDsM = purchasesMonth.map(el => el.product);
-  const productsM = await Product.find({ _id: {$in: productIDsM}});
-  const pricesM= productsM.map(el => el.price);
-  const purchasesMonthPrice = pricesM.reduce((acc, curr) => acc + curr, 0);
-  const purchasesMonthNum = prices.length;
+  const pM = purchaseMonth.map(el => el.price);
+  const pMP = pM.reduce((accumulator, currentValue) => accumulator + currentValue,0);
+  const countM = pM.length;
   //day
-  const productIDsD = purchasesDay.map(el => el.product);
-  const productsD = await Product.find({ _id: {$in: productIDsD}});
-  const pricesD= productsD.map(el => el.price);
-  const purchasesDayPrice = pricesD.reduce((acc, curr) => acc + curr, 0);
-  const purchasesDayNum = prices.length;
-  //
+  const pD = purchaseDay.map(el => el.price);
+  const pDP = pDP.reduce((accumulator, currentValue) => accumulator + currentValue,0);
+  const countD = pD.length;
+
   console.log("ATTENTION: ${}");
   res.status(200).render("account", {
     title: "Your account",
     pYP,
     countY,
-    purchasesMonthPrice,
-    purchasesMonthNum,
-    purchasesDayPrice,
-    purchasesDayNum
+    pMP,
+    countM,
+    pDP,
+    countD
   });
 };
 
