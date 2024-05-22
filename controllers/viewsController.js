@@ -75,24 +75,24 @@ exports.getAccount = async(req, res) => {
 
   const purchasesMonth = await Purchases.aggregate([
     {
-        $match: {
-            createdAt: {
-                $gte: ISODate(`${year}-05-01T00:00:00.000Z`), // Start of the year
-                $lt: ISODate(`${year + 1}-06-01T00:00:00.000Z`) // Start of the next year
-            }
-        }
-    }
+      $match: {
+        createdAt: {
+              $gte: new Date(`${year}-01-01T00:00:00.000Z`), // Start of the year
+              $lt: new Date(`${year + 1}-01-01T00:00:00.000Z`) // Start of the next year
+          }
+      }
+  }
   ]);
 
   const purchasesDay = await Purchases.aggregate([
     {
-        $match: {
-          createdAt: {
-                $gte: ISODate(`${year}-05-21T00:00:00.000Z`), // Start of the year
-                $lt: ISODate(`${year + 1}-05-22T00:00:00.000Z`) // Start of the next year
-            }
-        }
-    }
+      $match: {
+        createdAt: {
+              $gte: new Date(`${year}-05-01T00:00:00.000Z`), // Start of the year
+              $lt: new Date(`${year + 1}-06-01T00:00:00.000Z`) // Start of the next year
+          }
+      }
+  }
   ]);
 
   //year
