@@ -49,7 +49,7 @@ exports.getSignForm = catchAsync(async (req, res) => {
   });
 });
 
-exports.getAccount = (req, res) => {
+exports.getAccount = async(req, res) => {
   const timestamp = Date.now();
   const dateObj = new Date(timestamp);
   const month   = dateObj.getUTCMonth() + 1; // months from 1-12
@@ -60,12 +60,68 @@ exports.getAccount = (req, res) => {
   const pMonth        = month.toString().padStart(2,"0");
   const pDay          = day.toString().padStart(2,"0");
   const newPaddedDate = `${year}/${pMonth}/${pDay}`;
+  
+  const purchasesYear = await Purchases.aggregate([
+    {
+        $match: {
+            purchaseDate: {
+                $gte: new Date(`${year}-01-01T00:00:00.000Z`), // Start of the year
+                $lt: new Date(`${year + 1}-01-01T00:00:00.000Z`) // Start of the next year
+            }
+        }
+    }
+  ]);
+
+  const purchasesMonth = await Purchases.aggregate([
+    {
+        $match: {
+            purchaseDate: {
+                $gte: new Date(`${year}-${pMonth}-01T00:00:00.000Z`), // Start of the year
+                $lt: new Date(`${year + 1}-${pMonth+1}-01T00:00:00.000Z`) // Start of the next year
+            }
+        }
+    }
+  ]);
+
+  const purchasesDay = await Purchases.aggregate([
+    {
+        $match: {
+            purchaseDate: {
+                $gte: new Date(`${year}-${pMonth}-${pDay}T00:00:00.000Z`), // Start of the year
+                $lt: new Date(`${year + 1}-${pMonth+1}-${pDay+1}T00:00:00.000Z`) // Start of the next year
+            }
+        }
+    }
+  ]);
+
+  //year
+  const productIDs = purchasesYear.map(el => el.product);
+  const products = await Product.find({ _id: {$in: productIDs}});
+  const prices = products.map(el => el.price);
+  const purchasesYearPrice = prices.reduce((acc, curr) => acc + curr, 0);
+  const purchasesYearNum = prices.length;
+  //month
+  const productIDsM = purachasesMonth.map(el => el.product);
+  const productsM = await Product.find({ _id: {$in: productIDsM}});
+  const pricesM= productsM.map(el => el.price);
+  const purchasesMonthPrice = pricesM.reduce((acc, curr) => acc + curr, 0);
+  const purchasesMonthNum = prices.length;
+  //day
+  const productIDsD = purachasesDay.map(el => el.product);
+  const productsD = await Product.find({ _id: {$in: productIDsD}});
+  const pricesD= productsD.map(el => el.price);
+  const purchasesDayPrice = pricesD.reduce((acc, curr) => acc + curr, 0);
+  const purchasesDayNum = prices.length;
+  //
 
   res.status(200).render("account", {
     title: "Your account",
-    year,
-    pMonth,
-    pDay
+    purchasesYearPrice,
+    purchasesYearNum,
+    purchasesMonthPrice,
+    purchasesMonthNum,
+    purchasesDayPrice,
+    purchasesDayNum
   });
 };
 

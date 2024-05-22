@@ -60,9 +60,6 @@ const filterObj = (obj, ...allowedFields) => {
 
 exports.getMe = (req, res, next) => {
   req.params.id = req.user.id;
-  req.params.year= '2024';
-  req.params.month= '05';
-  req.params.day= '22';
   next();
 };
 
