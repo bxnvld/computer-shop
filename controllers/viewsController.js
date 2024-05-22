@@ -61,7 +61,7 @@ exports.getMyProducts = catchAsync(async (req,res) => {
   const productIDs = purchases.map(el => el.product);
   // select all the products that are in the productsIDs
   const products = await Product.find({ _id: {$in: productIDs}});
-
+  const prices = products.map(el => el.price);
   const totalPrice = prices.reduce((acc, curr) => acc + curr, 0);
 
   res.status(200).render('overview', {
